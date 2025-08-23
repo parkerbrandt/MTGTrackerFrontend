@@ -1,9 +1,9 @@
-import './App.css';
+import './home.css'
 
-import Header from './components/Header.js'
+import Header from '../../components/Header';
 
 
-function App() {
+function Home() {
   return (
     <div className="App">
       <Header />
@@ -12,4 +12,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
