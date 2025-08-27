@@ -1,12 +1,17 @@
-function Header() {
+import './header.css'
+
+import { Route, Routes } from 'react-router-dom';
+
+import Home from '../pages/Home/Home';
+import Log from '../pages/Log/Log';
+
+
+const Header = () => {
     return (
         <div>
-            <button>Home</button>
-            <button>Profile</button>
-            <button>Decks</button>
-            <button>Groups</button>
-            <button>Match History</button>
-            <button>Log</button>
+            <nav>
+                <Link></Link>
+            </nav>
         </div>
     );
 }

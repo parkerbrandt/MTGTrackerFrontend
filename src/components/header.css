@@ -1,0 +1,7 @@
+.button {
+    border: 2px;
+    color: lightgrey;
+    text-align: center;
+    display: inline-block;
+    margin: 4px 2px;
+}
