@@ -3,11 +3,11 @@ import './home.css'
 import Header from '../../components/Header';
 import News from '../../components/News';
 
-function Home() {
+const Home = () => {
   return (
     <div className="App">
-      <Header />
-      <h1>Track Your Magic Games!</h1>
+      <Header />  
+      <h1 className="block">Track Your Magic Games!</h1>
       <News />
     </div>
   );

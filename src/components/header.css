@@ -1,3 +1,13 @@
+.header {
+    background-color: gray;
+    border: 10px;
+    border-color: black;
+    border-radius: 5px;
+    color: white;
+    margin: 4px 2px;
+    text-align: center;
+}
+
 .button {
     border: 2px;
     color: lightgrey;

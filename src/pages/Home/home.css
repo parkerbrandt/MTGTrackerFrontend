@@ -1,3 +1,13 @@
+.block {
+  background-color: gray;
+  border: 10px;
+  border-color: black;
+  border-radius: 5px;
+  color: white;
+  margin: 10px 10px;
+  text-align: center;
+}
+
 .App {
   text-align: center;
 }

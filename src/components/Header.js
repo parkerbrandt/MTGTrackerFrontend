@@ -1,16 +1,14 @@
 import './header.css'
 
-import { Route, Routes } from 'react-router-dom';
-
-import Home from '../pages/Home/Home';
-import Log from '../pages/Log/Log';
+import { Link } from 'react-router-dom';
 
 
 const Header = () => {
     return (
-        <div>
+        <div className="header">
             <nav>
-                <Link></Link>
+                <Link to="/">Home</Link>
+                <Link to="/log">Log</Link>
             </nav>
         </div>
     );

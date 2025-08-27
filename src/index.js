@@ -4,7 +4,8 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 import Home from './pages/Home/Home';
-import { BrowserRouter } from 'react-router-dom';
+import Log from './pages/Log/Log';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -15,7 +16,6 @@ root.render(
         <Route path="/" element={<Home />} />
         <Route path="/log" element={<Log />} />
       </Routes>
-      <Home />
     </BrowserRouter>
   </React.StrictMode>
 );
