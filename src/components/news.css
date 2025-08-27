@@ -1,0 +1,8 @@
+.news-block {
+    background-color: gray;
+    border-radius: 5px;
+    color: white;
+    float: left;
+    margin: 10px 10px;
+    width: 33%;
+}

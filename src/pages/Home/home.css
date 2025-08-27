@@ -1,11 +1,14 @@
-.block {
+.welcome {
   background-color: gray;
   border: 10px;
   border-color: black;
   border-radius: 5px;
   color: white;
+  display: inline-block;
   margin: 10px 10px;
+  padding: 10px 30px;
   text-align: center;
+  width: 66%;
 }
 
 .App {

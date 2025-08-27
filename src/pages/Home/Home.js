@@ -6,8 +6,8 @@ import News from '../../components/News';
 const Home = () => {
   return (
     <div className="App">
-      <Header />  
-      <h1 className="block">Track Your Magic Games!</h1>
+      <Header /><br />
+      <h1 className="welcome">Track Your Magic Games!</h1><br />
       <News />
     </div>
   );
