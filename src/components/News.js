@@ -1,9 +1,17 @@
 import './news.css'
 
-function News() {
+const News = () => {
+    // TODO: Get News from Server
+    
+
     return (
-        <div className="news-block">
-            <h3>News</h3>
+        <div className="container">
+            <div className="header">
+                <h3><u>News</u></h3>
+            </div>
+            <div className="content">
+                <p>Test</p>
+            </div>
         </div>
     );
 }

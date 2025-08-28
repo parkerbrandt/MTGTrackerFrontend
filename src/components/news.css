@@ -1,8 +1,32 @@
-.news-block {
-    background-color: gray;
-    border-radius: 5px;
-    color: white;
-    float: left;
+.container {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "content";
+    grid-template-columns: 1fr;
     margin: 10px 10px;
-    width: 33%;
+    padding: 5px;
+    width: 33%
+}
+
+.container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+}
+
+.container > div.header {
+  background-color: gray;
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: white;
+  grid-area: header;
+  text-align: center;
+}
+
+.container > div.content {
+  background-color: lightgrey;
+  border: 1px solid gray;
+  border-radius: 5px;
+  grid-area: content;
+  text-align: left;
 }

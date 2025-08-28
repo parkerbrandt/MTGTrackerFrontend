@@ -9,6 +9,8 @@ const Home = () => {
       <Header /><br />
       <h1 className="welcome">Track Your Magic Games!</h1><br />
       <News />
+      <h3>Your Updates</h3>
+      <h3>Looking for Players</h3>
     </div>
   );
 }
