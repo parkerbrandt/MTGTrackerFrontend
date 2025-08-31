@@ -10,6 +10,8 @@ const Log = () => {
     
     const [players, setPlayers] = useState([]);
     const [selectedFormat, setSelectedFormat] = useState("");
+    const [numPlayers, setNumPlayers] = useState(2);
+
 
     /*
     * Helper Functions
@@ -17,6 +19,7 @@ const Log = () => {
     function isFormComplete() {
         return false;
     }
+
 
     /*
     * Handler Functions
@@ -33,6 +36,7 @@ const Log = () => {
         }
     }
 
+
     /*
     * First Render Hook
     */
@@ -40,19 +44,56 @@ const Log = () => {
         // Get formats from the server
     }, []);
 
+
     /*
     * Every Render Hook
     */
-   useEffect(() => {
+    useEffect(() => {
 
-   });
+    });
 
+
+    /*
+    * Hooks for changes
+    */
+    useEffect(() => {
+        if (selectedFormat === "EDH") {
+            setNumPlayers(4);
+            setPlayers(new Array(4));
+        } else {
+            setNumPlayers(2);
+            setPlayers(new Array(2));
+        }
+    }, [selectedFormat])
+
+
+    /*
+    * Child Components
+    */
+    const PlayerInput = (players) => {
+        return (
+            Array.from(players).map((item, index) => {
+                console.log("test");
+                <div>
+                    <label>Player</label>
+                    <input type="text" /><br />
+                </div>
+            })
+        )
+    }
     
+
+    /*
+    * Rendering
+    */ 
     return (
         <div className="App">
             <Header /><br />
             <h1 className="block">Log</h1>
             <form onSubmit={handleSubmit}>
+                <h4>DATE</h4>
+                <input type="date"></input><br />
+                <h4>FORMAT</h4>
                 <label>
                     <input 
                         type="radio"
@@ -116,6 +157,42 @@ const Log = () => {
                         onChange={handleChange}
                     />Canadian Highlander
                 </label><br />
+                <h4>Players</h4>
+                <label>Player 1: </label>
+                <input type="text"></input>
+                <label>Player 2: </label>
+                <input type="text"></input>
+                {
+                    (selectedFormat === "EDH" || selectedFormat === "CHD") && (
+                        <>
+                            <br />
+                            <label>Player 3: </label>
+                            <input type="text"></input>
+                            <label>Player 4: </label>
+                            <input type="text"></input>
+                        </>
+                    )
+                }
+
+                {
+                    (selectedFormat === "EDH") && (
+                        <>
+                            <h4>Commanders</h4>
+                            <label>Player 1: </label>
+                            <input type="text"></input>
+                            <label>Player 2: </label>
+                            <input type="text"></input><br />
+                            <label>Player 3: </label>
+                            <input type="text"></input>
+                            <label>Player 4: </label>
+                            <input type="text"></input>
+                        </>
+                    )
+                }
+
+                <h4>Outcome</h4>
+
+                <br /><br />
                 <button type="submit">Submit</button>
             </form>
         </div>
