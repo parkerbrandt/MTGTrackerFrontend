@@ -57,30 +57,13 @@ const Log = () => {
     * Hooks for changes
     */
     useEffect(() => {
-        if (selectedFormat === "EDH") {
-            setNumPlayers(4);
-            setPlayers(new Array(4));
-        } else {
-            setNumPlayers(2);
-            setPlayers(new Array(2));
-        }
+
     }, [selectedFormat])
 
 
     /*
     * Child Components
     */
-    const PlayerInput = (players) => {
-        return (
-            Array.from(players).map((item, index) => {
-                console.log("test");
-                <div>
-                    <label>Player</label>
-                    <input type="text" /><br />
-                </div>
-            })
-        )
-    }
     
 
     /*
@@ -190,7 +173,42 @@ const Log = () => {
                     )
                 }
 
+                <h4>Decks</h4>
+                <label>Player 1 Deck Title: </label>
+                <input type="text"></input>
+                <label>Decklist Link: </label>
+                <input type="text"></input><br />
+
+                <label>Player 2 Deck Title: </label>
+                <input type="text"></input>
+                <label>Decklist Link: </label>
+                <input type="text"></input><br />
+
+                {
+                    ((selectedFormat === "EDH") || (selectedFormat === "CHD")) && 
+                    <>
+                        <label>Player 3 Deck Title: </label>
+                        <input type="text"></input>
+                        <label>Decklist Link: </label>
+                        <input type="text"></input><br />
+
+                        <label>Player 4 Deck Title: </label>
+                        <input type="text"></input>
+                        <label>Decklist Link: </label>
+                        <input type="text"></input><br />
+                    </>
+                }
+
                 <h4>Outcome</h4>
+
+                <h4>Optional</h4>
+                <label>Who went first? </label>
+                <input type="text"></input><br />
+                <label>How many turns? </label>
+                <input type="number"></input><br />
+
+                <h4>Comments</h4>
+                <input type="text"></input>
 
                 <br /><br />
                 <button type="submit">Submit</button>
