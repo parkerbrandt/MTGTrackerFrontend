@@ -1,0 +1,28 @@
+a:link {
+    color: white;
+}
+
+a:visited {
+    color: white;
+}
+
+a:hover {
+    color: red;
+}
+
+.footer {
+    background-color: gray;
+    border: 10px;
+    border-color: black;
+    border-radius: 5px;
+    color: white;
+    margin: 4px 2px;
+    padding: 2px;
+    text-align: center;
+}
+
+.text {
+    margin: 4px;
+    padding: 5px;
+    border-right: 1px solid black;
+}
