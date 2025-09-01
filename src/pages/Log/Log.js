@@ -1,5 +1,6 @@
 import "./log.css"
 
+import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import { useEffect, useState } from "react";
 
@@ -72,10 +73,12 @@ const Log = () => {
     return (
         <div className="App">
             <Header /><br />
+
             <h1 className="block">Log</h1>
             <form onSubmit={handleSubmit}>
                 <h4>DATE</h4>
                 <input type="date"></input><br />
+
                 <h4>FORMAT</h4>
                 <label>
                     <input 
@@ -140,6 +143,7 @@ const Log = () => {
                         onChange={handleChange}
                     />Canadian Highlander
                 </label><br />
+                
                 <h4>Players</h4>
                 <label>Player 1: </label>
                 <input type="text"></input>
@@ -236,7 +240,9 @@ const Log = () => {
 
                 <br /><br />
                 <button type="submit">Submit</button>
-            </form>
+            </form><br />
+
+            <Footer />
         </div>
     );
 }
