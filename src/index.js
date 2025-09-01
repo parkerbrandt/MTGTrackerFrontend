@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 
 import Home from './pages/Home/Home';
 import Log from './pages/Log/Log';
+import Profile from './pages/Profile/Profile'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
@@ -15,6 +16,7 @@ root.render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/log" element={<Log />} />
+        <Route path="/profile" element={<Profile />}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
