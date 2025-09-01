@@ -168,7 +168,9 @@ const Log = () => {
                             <label>Player 3: </label>
                             <input type="text"></input>
                             <label>Player 4: </label>
-                            <input type="text"></input>
+                            <input type="text"></input><br />
+                            <label>Bracket: </label>
+                            <input type="number"></input>
                         </>
                     )
                 }
@@ -200,6 +202,28 @@ const Log = () => {
                 }
 
                 <h4>Outcome</h4>
+
+                {
+                    ((selectedFormat !== "EDH") && (selectedFormat !== "CHD")) &&
+                    <>
+                        <label>Winner: </label>
+                        <input type="text" /><br />
+                    </>
+                }
+
+                {
+                    ((selectedFormat === "EDH") || (selectedFormat === "CHD")) && 
+                    <>
+                        <label>1st Place: </label>
+                        <input type="text" /><br />
+                        <label>2nd Place: </label>
+                        <input type="text" /><br />
+                        <label>3rd Place: </label>
+                        <input type="text" /><br />
+                        <label>4th Place: </label>
+                        <input type="text" /><br />
+                    </>
+                }
 
                 <h4>Optional</h4>
                 <label>Who went first? </label>
