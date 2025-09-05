@@ -20,7 +20,14 @@ a:hover {
     color: white;
     margin: 4px 2px;
     padding: 2px;
+}
+
+.header-left {
     text-align: left;
+}
+
+.header-right {
+    text-align: right;
 }
 
 .text {
