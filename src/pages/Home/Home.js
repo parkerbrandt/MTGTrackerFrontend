@@ -4,11 +4,15 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import News from '../../components/News';
 
+import { loginRq, registerRq } from '../../utils/requests'
 import { useEffect, useState } from "react";
 
 
 const Home = () => {
 
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoggingIn, setIsLoggingIn] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
@@ -34,6 +38,16 @@ const Home = () => {
   const LoginPage = () => {
 
     const handleLogin = () => {
+
+      // Check if user is logging in or registering
+      if (isLoggingIn) {
+        // TODO: Send username/password to server, and retrieve isValid or not
+        let response = loginRq();
+      } else {
+        // Register the user with the server
+
+      }
+
       setIsLoggedIn(true);
     }
 
@@ -42,10 +56,11 @@ const Home = () => {
         <h1>LOG IN or REGISTER</h1>
         <form onSubmit={handleLogin}>
           <label>Username: </label>
-          <input type="text"></input><br />
+          <input type="text" name="username"></input><br />
           <label>Password: </label>
-          <input type="text"></input><br />
-          <button type="submit">Log In</button>
+          <input type="text" name="password"></input><br />
+          <button type="submit" onClick={setIsLoggingIn(true)}>Log In</button>
+          <button type="submit" onClick={setIsLoggingIn(false)}>Register</button>
         </form>
       </div>
     );
@@ -53,6 +68,7 @@ const Home = () => {
 
 
   return (
+
     <div className="App">
       {
         isLoggedIn ? ( 
