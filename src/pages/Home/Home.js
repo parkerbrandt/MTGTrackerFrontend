@@ -4,7 +4,7 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import News from '../../components/News';
 
-import { loginRq, registerRq } from '../../utils/requests'
+import { loginRq } from '../../utils/requests';
 import { useEffect, useState } from "react";
 
 
@@ -42,10 +42,10 @@ const Home = () => {
       // Check if user is logging in or registering
       if (isLoggingIn) {
         // TODO: Send username/password to server, and retrieve isValid or not
-        let response = loginRq();
+        let response = loginRq("login", username, password);
       } else {
         // Register the user with the server
-
+        let response = loginRq("register", username, password);
       }
 
       setIsLoggedIn(true);
