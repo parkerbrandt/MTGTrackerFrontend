@@ -12,6 +12,7 @@ const Home = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setLoading] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -39,16 +40,23 @@ const Home = () => {
 
     const handleLogin = () => {
 
-      // Check if user is logging in or registering
-      if (isLoggingIn) {
-        // TODO: Send username/password to server, and retrieve isValid or not
-        let response = loginRq("login", username, password);
-      } else {
-        // Register the user with the server
-        let response = loginRq("register", username, password);
-      }
+      try {
+        let loginAction = isLoggingIn ? "login" : "register";
+        loginRq(loginAction, username, password)
+          .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network Response Error: ", response.status);
+            }
 
-      setIsLoggedIn(true);
+            setIsLoggedIn(true);
+          })
+          .catch((error) => {
+              console.error("Login Error: ", error);
+          });
+
+      } catch (err) {
+        console.error("Could not authorize user: ", err);
+      }
     }
 
     return (
