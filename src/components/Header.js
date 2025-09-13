@@ -8,12 +8,14 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <Container className='header'>
+        <Container fluid="lg" className='header'>
             <Row className='header-left'>
-                <Col><Link className="text" to="/">Home</Link></Col>
-                <Col><Link className="text" to="/profile">Profile</Link></Col>
-                <Col><Link className="text" to="/log">Log</Link></Col>
-                <Col><Link className="text" to="/">Logout</Link></Col>
+                <Col>
+                    <Link className="links" to="/">Home</Link>
+                    <Link className="links" to="/profile">Profile</Link>
+                    <Link className="links" to="/log">Log</Link>
+                    <Link className="links" to="/">Logout</Link>
+                </Col>
             </Row>
         </Container>
     );

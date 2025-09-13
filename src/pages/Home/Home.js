@@ -26,7 +26,7 @@ const Home = () => {
   const HomePage = () => {
     
     return (
-          <Container>
+          <Container fluid="lg">
             <Row>
               <Col><Header /></Col>
             </Row>

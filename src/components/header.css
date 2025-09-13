@@ -30,8 +30,6 @@ a:hover {
     text-align: right;
 }
 
-.text {
-    margin: 4px;
-    padding: 2px;
-    border-right: 1px solid black;
+.links {
+    padding: 5px;
 }
