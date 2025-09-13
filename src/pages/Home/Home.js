@@ -6,6 +6,9 @@ import News from '../../components/News';
 
 import { loginRq } from '../../utils/requests';
 import { useEffect, useState } from "react";
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 
 const Home = () => {
@@ -23,15 +26,23 @@ const Home = () => {
   const HomePage = () => {
     
     return (
-          <div>
-            <Header /><br />
-            <h1 className="welcome">Track Your Magic Games!</h1><br />
-            <News />
-            <h3>Featured</h3>
-            <h3>Your Updates</h3>
-            <h3>Looking for Players</h3><br />
-            <Footer />
-          </div>
+          <Container>
+            <Row>
+              <Col><Header /></Col>
+            </Row>
+            <Row>
+              <Col><h1 className="welcome">Track Your Magic Games!</h1></Col>
+            </Row>
+            <Row>
+              <Col><News /></Col>
+              <Col><h3>Featured</h3></Col>
+              <Col><h3>Your Updates</h3></Col>
+              <Col><h3>Looking for Players</h3><br /></Col>
+            </Row>
+            <Row>
+              <Col><Footer /></Col>
+            </Row>
+          </Container>
     )
   }
 
@@ -39,6 +50,8 @@ const Home = () => {
   const LoginPage = () => {
 
     const handleLogin = () => {
+      // TODO: Placeholder
+      setIsLoggedIn(true);
 
       try {
         let loginAction = isLoggingIn ? "login" : "register";
