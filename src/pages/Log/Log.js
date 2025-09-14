@@ -2,35 +2,48 @@ import "./log.css"
 
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 import Form from "react-bootstrap/Form";
+import Row from 'react-bootstrap/Row';
 
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import { Container, Row } from "react-bootstrap";
 
 
 
 // TODO: Get list of formats from server and display that way
 // TODO: Loading Symbol
 const Log = () => {
+
+    // TODO: Change to request
+
+    const formats = {
+        "CDH": ["Canadian Highlander", 2],
+        "EDH": ["Commander", 4],
+        "LGC": ["Legacy", 2],
+        "MDN": ["Modern", 2],
+        "PPR": ["Pauper", 2],
+        "PNR": ["Pioneer", 2],
+        "STD": ["Standard", 2],
+        "THD": ["Two Headed Dragon", 4]
+    };
     
     const [players, setPlayers] = useState([]);
     const [selectedFormat, setSelectedFormat] = useState("");
-    const [numPlayers, setNumPlayers] = useState(2);
-
 
     /*
     * Helper Functions
     */ 
     function isFormComplete() {
-        return false;
+        return true;
     }
 
 
     /*
     * Handler Functions
     */
-    function handleChange(e) {
+    function handleFormatChange(e) {
         setSelectedFormat(e.target.value);
     }
 
@@ -76,179 +89,55 @@ const Log = () => {
     * Rendering
     */ 
     return (
-        <div className="App">
-            <Header /><br />
-
-            <h1 className="block">Log</h1>
-            <form onSubmit={handleSubmit}>
-                <h4>DATE</h4>
-                <input type="date"></input><br />
-
-                <h4>FORMAT</h4>
-                <label>
-                    <input 
-                        type="radio"
-                        name="format"
-                        value="STD"
-                        checked={selectedFormat === "STD"}
-                        onChange={handleChange}
-                    />Standard
-                </label>
-                <label>
-                    <input 
-                        type="radio"
-                        name="format"
-                        value="MDN"
-                        checked={selectedFormat === "MDN"}
-                        onChange={handleChange}
-                    />Modern
-                </label>
-                <label>
-                    <input 
-                        type="radio"
-                        name="format"
-                        value="PNR"
-                        checked={selectedFormat === "PNR"}
-                        onChange={handleChange}
-                    />Pioneer
-                </label>
-                <label>
-                    <input 
-                        type="radio"
-                        name="format"
-                        value="LGY"
-                        checked={selectedFormat === "LGY"}
-                        onChange={handleChange}
-                    />Legacy
-                </label>
-                <label>
-                    <input 
-                        type="radio"
-                        name="format"
-                        value="PPR"
-                        checked={selectedFormat === "PPR"}
-                        onChange={handleChange}
-                    />Pauper
-                </label><br />
-                <label>
-                    <input 
-                        type="radio"
-                        name="format"
-                        value="EDH"
-                        checked={selectedFormat === "EDH"}
-                        onChange={handleChange}
-                    />Commander
-                </label>
-                <label>
-                    <input 
-                        type="radio"
-                        name="format"
-                        value="CHD"
-                        checked={selectedFormat === "CHD"}
-                        onChange={handleChange}
-                    />Canadian Highlander
-                </label><br />
-                
-                <h4>Players</h4>
-                <label>Player 1: </label>
-                <input type="text"></input>
-                <label>Player 2: </label>
-                <input type="text"></input>
-                {
-                    (selectedFormat === "EDH" || selectedFormat === "CHD") && (
-                        <>
-                            <br />
-                            <label>Player 3: </label>
-                            <input type="text"></input>
-                            <label>Player 4: </label>
-                            <input type="text"></input>
-                        </>
-                    )
-                }
-
-                {
-                    (selectedFormat === "EDH") && (
-                        <>
-                            <h4>Commanders</h4>
-                            <label>Player 1: </label>
-                            <input type="text"></input>
-                            <label>Player 2: </label>
-                            <input type="text"></input><br />
-                            <label>Player 3: </label>
-                            <input type="text"></input>
-                            <label>Player 4: </label>
-                            <input type="text"></input><br />
-                            <label>Bracket: </label>
-                            <input type="number"></input>
-                        </>
-                    )
-                }
-
-                <h4>Decks</h4>
-                <label>Player 1 Deck Title: </label>
-                <input type="text"></input>
-                <label>Decklist Link: </label>
-                <input type="text"></input><br />
-
-                <label>Player 2 Deck Title: </label>
-                <input type="text"></input>
-                <label>Decklist Link: </label>
-                <input type="text"></input><br />
-
-                {
-                    ((selectedFormat === "EDH") || (selectedFormat === "CHD")) && 
-                    <>
-                        <label>Player 3 Deck Title: </label>
-                        <input type="text"></input>
-                        <label>Decklist Link: </label>
-                        <input type="text"></input><br />
-
-                        <label>Player 4 Deck Title: </label>
-                        <input type="text"></input>
-                        <label>Decklist Link: </label>
-                        <input type="text"></input><br />
-                    </>
-                }
-
-                <h4>Outcome</h4>
-
-                {
-                    ((selectedFormat !== "EDH") && (selectedFormat !== "CHD")) &&
-                    <>
-                        <label>Winner: </label>
-                        <input type="text" /><br />
-                    </>
-                }
-
-                {
-                    ((selectedFormat === "EDH") || (selectedFormat === "CHD")) && 
-                    <>
-                        <label>1st Place: </label>
-                        <input type="text" /><br />
-                        <label>2nd Place: </label>
-                        <input type="text" /><br />
-                        <label>3rd Place: </label>
-                        <input type="text" /><br />
-                        <label>4th Place: </label>
-                        <input type="text" /><br />
-                    </>
-                }
-
-                <h4>Optional</h4>
-                <label>Who went first? </label>
-                <input type="text"></input><br />
-                <label>How many turns? </label>
-                <input type="number"></input><br />
-
-                <h4>Comments</h4>
-                <input type="text"></input>
-
-                <br /><br />
-                <button type="submit">Submit</button>
-            </form><br />
-
-            <Footer />
-        </div>
+        <Container fluid="lg" className="App">
+            <Row>
+                <Col><Header /></Col>
+            </Row>
+            <Row>
+                <Col>
+                    <h1 className="block">Log</h1>
+                </Col>
+            </Row>
+            <Row>
+                <Form>
+                    <Form.Group controlId="logForm.DateInput">
+                        <Form.Label><b>DATE: </b></Form.Label>
+                        <Form.Control type="date" />
+                    </Form.Group>
+                    <Form.Group controlId="logForm.FormatInput">
+                        <Form.Label><b>FORMAT: </b></Form.Label>
+                        {
+                            Object.keys(formats).map((e) => (
+                                    <Form.Check 
+                                        inline
+                                        type={"radio"}
+                                        id={`${e}`}
+                                        label={`${formats[e][0]}`}
+                                    />
+                            ))
+                        }
+                    </Form.Group>
+                    <Form.Group controlId="logForm.PlayerInput">
+                        <Form.Label><b>PLAYERS: </b></Form.Label>
+                    </Form.Group>
+                    <Form.Group controlId="logForm.DeckInput">
+                        <Form.Label><b>DECKS: </b></Form.Label>
+                    </Form.Group>
+                    <Form.Group controlId="logForm.OutcomeInput">
+                        <Form.Label><b>OUTCOME: </b></Form.Label>
+                    </Form.Group>
+                    <Form.Group controlId="logForm.OptionalInput">
+                        <Form.Label><b>OPTIONAL: </b></Form.Label>
+                    </Form.Group>
+                    <Form.Group controlId="logForm.CommentInput">
+                        <Form.Label><b>COMMENTS: </b></Form.Label>
+                    </Form.Group>
+                </Form>
+            </Row>
+            <Row>
+                <Footer />
+            </Row>
+        </Container>
     );
 }
 
