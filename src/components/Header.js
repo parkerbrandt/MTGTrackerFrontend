@@ -9,25 +9,40 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 
 
-const Header = () => {
+const Header = (username="User") => {
     return (
-        <Navbar expand="lg">
-            <Container fluid="lg" className="header">
-                <Navbar.Brand href="#home"></Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse>
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#profile">Profile</Nav.Link>
-                    <Nav.Link href="#log">Log</Nav.Link>
-                    <NavDropdown title="Social" id="social-dropdown">
-                        <NavDropdown.Item>Friends</NavDropdown.Item>
-                        <NavDropdown.Item>Groups</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item>Find a Game</NavDropdown.Item>
-                    </NavDropdown>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+        <Container>
+            <Navbar expand="lg" bg="dark" data-bs-theme="dark">
+                <Container fluid="lg" className="header">
+                    <Navbar.Brand href="#home"></Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse>
+                        <Nav navbarScroll>
+                            <Nav.Link href="#home">Home</Nav.Link>
+                            <Nav.Link href="#profile">Profile</Nav.Link>
+                            <Nav.Link href="#log">Log</Nav.Link>
+                            <NavDropdown title="Social" id="social-dropdown">
+                                <NavDropdown.Item>Friends</NavDropdown.Item>
+                                <NavDropdown.Item>Groups</NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item>Find a Game</NavDropdown.Item>
+                            </NavDropdown>
+                            <Navbar.Text>
+                                Signed in as: <a href="#profile">{username}</a>
+                            </Navbar.Text>
+                        </Nav>
+                        <Form>
+                            <Form.Control
+                                type="search"
+                                placeholder="Search"
+                                aria-label="Search"
+                            />
+                            <Button variant="outline-success">Search</Button>
+                        </Form>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+        </Container>
     );
 }
 
