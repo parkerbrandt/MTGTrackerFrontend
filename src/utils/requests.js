@@ -1,9 +1,33 @@
 import { urlConfig } from "./config";
 
-export async function loginRq (requestType, user, pass) {
+/*
+* GET REQUESTS
+*/
+
+export const getFormats = async () => {
+    let rqUrl = urlConfig["formatsUrl"];
+
+    return await fetch(
+        rqUrl,
+        {        
+            method: "GET",
+            headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*"
+            }
+        }
+    )
+}
+
+
+/*
+* POST REQUESTS
+*/
+
+export const loginRq = async (requestType, user, pass) => {
     let rqUrl = requestType === "login" ? urlConfig["loginUrl"] : urlConfig["registerUrl"];
     
-    await fetch(
+    return await fetch(
         rqUrl, 
         {
             method: "POST",

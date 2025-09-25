@@ -9,6 +9,7 @@ import Row from 'react-bootstrap/Row';
 
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import getFormats from "../../utils/requests";
 
 
 
@@ -18,19 +19,10 @@ const Log = () => {
 
     // TODO: Change to request
 
-    const formats = {
-        "CDH": ["Canadian Highlander", 2],
-        "EDH": ["Commander", 4],
-        "LGC": ["Legacy", 2],
-        "MDN": ["Modern", 2],
-        "PPR": ["Pauper", 2],
-        "PNR": ["Pioneer", 2],
-        "STD": ["Standard", 2],
-        "THD": ["Two Headed Dragon", 4]
-    };
-    
+    const [formats, setFormats] = useState({});
     const [players, setPlayers] = useState([]);
     const [selectedFormat, setSelectedFormat] = useState("");
+    const [validateForm, setValidateForm] = useState(false);
 
     /*
     * Helper Functions
@@ -51,7 +43,8 @@ const Log = () => {
         if (isFormComplete()) {
             // Form is complete, log the game
         } else {
-            // Form is incomplete, display error message
+            // Form is incomplete, display error message and show invalid fields
+            setValidateForm(true);
         }
     }
 
@@ -61,6 +54,24 @@ const Log = () => {
     */
     useEffect(() => {
         // Get formats from the server
+        // TODO: Could put into async handler
+        try {
+            const formatsPromise = getFormats();
+            setFormats(formatsPromise);
+        } catch(err) {
+            console.log("Unable to retrieve formats, using defaults.");
+            setFormats({
+                "CDH": ["Canadian Highlander", 2],
+                "EDH": ["Commander", 4],
+                "LGC": ["Legacy", 2],
+                "MDN": ["Modern", 2],
+                "PPR": ["Pauper", 2],
+                "PNR": ["Pioneer", 2],
+                "STD": ["Standard", 2],
+                "THD": ["Two Headed Dragon", 4]
+            });
+        }
+        
     }, []);
 
 
@@ -99,7 +110,7 @@ const Log = () => {
                 </Col>
             </Row>
             <Row>
-                <Form>
+                <Form validated={validateForm}>
                     <Form.Group controlId="logForm.DateInput">
                         <Form.Label><b>DATE: </b></Form.Label>
                         <Form.Control type="date" />
@@ -132,6 +143,9 @@ const Log = () => {
                     <Form.Group controlId="logForm.CommentInput">
                         <Form.Label><b>COMMENTS: </b></Form.Label>
                     </Form.Group>
+                    <Button type="submit" onClick={handleSubmit}>
+                        Submit
+                    </Button>
                 </Form>
             </Row>
             <Row>
