@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Form from "react-bootstrap/Form";
 import Row from 'react-bootstrap/Row';
+import Spinner from 'react-bootstrap/Spinner';
 
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
@@ -20,6 +21,7 @@ const Log = () => {
     // TODO: Change to request
 
     const [formats, setFormats] = useState({});
+    const [isLoading, setLoading] = useState(false);
     const [players, setPlayers] = useState([]);
     const [selectedFormat, setSelectedFormat] = useState("");
     const [validateForm, setValidateForm] = useState(false);
@@ -87,7 +89,9 @@ const Log = () => {
     * Hooks for changes
     */
     useEffect(() => {
-
+        // Update the number of players based on format selected
+        let numPlayers = formats[selectedFormat][1];
+        setPlayers(new Array(numPlayers));
     }, [selectedFormat])
 
 
@@ -130,9 +134,22 @@ const Log = () => {
                     </Form.Group>
                     <Form.Group controlId="logForm.PlayerInput">
                         <Form.Label><b>PLAYERS: </b></Form.Label>
+                        {
+                            players.map((e, i) => (
+                                <Form.Text id={"player" + i + "Name"} muted>Player {i}</Form.Text>
+                            ))
+                        }
                     </Form.Group>
                     <Form.Group controlId="logForm.DeckInput">
                         <Form.Label><b>DECKS: </b></Form.Label>
+                        {
+                            players.map((e, i) => (
+                                <>
+                                    <Form.Text id={"player" + i + "Deck"} muted>Player {i} Deck</Form.Text>
+                                    <Form.Text id={"player" + i + "Decklist"} muted>Player {i} Decklist - Optional</Form.Text>
+                                </>
+                            ))
+                        }
                     </Form.Group>
                     <Form.Group controlId="logForm.OutcomeInput">
                         <Form.Label><b>OUTCOME: </b></Form.Label>
@@ -143,7 +160,7 @@ const Log = () => {
                     <Form.Group controlId="logForm.CommentInput">
                         <Form.Label><b>COMMENTS: </b></Form.Label>
                     </Form.Group>
-                    <Button type="submit" onClick={handleSubmit}>
+                    <Button variant="primary" onClick={handleSubmit}>
                         Submit
                     </Button>
                 </Form>
