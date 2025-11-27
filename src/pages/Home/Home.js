@@ -4,6 +4,8 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
+import Header from '../../components/Header';
+
 
 /*
 * Render the Login Page and then the Home Page if the user is logged in
@@ -32,9 +34,9 @@ const Home = () => {
   */
   const HomePage = () => {
     return  (
-      <Container fluid="xl">
+      <Container fluid>
         <Row>
-          <Col><h3>Header</h3></Col>
+          <Col><Header /></Col>
         </Row>
         <Row>
           <Col>
@@ -42,7 +44,7 @@ const Home = () => {
           </Col>
         </Row>
         <Row>
-          <Col>News</Col>
+          <Col><h3>News</h3></Col>
           <Col><h3>Featured</h3></Col>
           <Col><h3>Your Updates</h3></Col>
           <Col><h3>Looking for Players</h3></Col>
