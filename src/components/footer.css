@@ -16,9 +16,9 @@ a:hover {
     border-color: black;
     border-radius: 5px;
     color: white;
-    margin: 4px 2px;
     padding: 2px;
     text-align: center;
+    width: 92%;
 }
 
 .text {

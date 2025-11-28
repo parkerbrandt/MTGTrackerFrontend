@@ -10,7 +10,6 @@ import Spinner from 'react-bootstrap/Spinner';
 
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import getFormats from "../../utils/requests";
 
 
 
@@ -58,8 +57,7 @@ const Log = () => {
         // Get formats from the server
         // TODO: Could put into async handler
         try {
-            const formatsPromise = getFormats();
-            setFormats(formatsPromise);
+
         } catch(err) {
             console.log("Unable to retrieve formats, using defaults.");
             setFormats({

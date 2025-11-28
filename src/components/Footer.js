@@ -1,12 +1,14 @@
 import './footer.css'
 
+import Container from 'react-bootstrap/Container';
+
 
 const Footer = () => {
 
     return (
-        <div className="footer">
-            <label>Contact Us</label>
-        </div>
+        <Container className="footer">
+            <h3>Test</h3>
+        </Container>
     );
 }
 

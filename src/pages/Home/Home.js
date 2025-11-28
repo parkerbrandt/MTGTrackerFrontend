@@ -5,6 +5,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import News from '../../components/News';
 
 
 /*
@@ -44,13 +46,15 @@ const Home = () => {
           </Col>
         </Row>
         <Row>
-          <Col><h3>News</h3></Col>
+          <Col><News /></Col>
           <Col><h3>Featured</h3></Col>
           <Col><h3>Your Updates</h3></Col>
+        </Row>
+        <Row>
           <Col><h3>Looking for Players</h3></Col>
         </Row>
         <Row>
-          <Col><h3>Footer</h3></Col>
+          <Col><Footer /></Col>
         </Row>
       </Container>
     );
