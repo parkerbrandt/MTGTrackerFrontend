@@ -13,14 +13,14 @@ const Header = (username="User") => {
         <Container>
             <Navbar expand="lg">
                 <Container fluid="lg" className="header">
-                    <Navbar.Brand href="#home"></Navbar.Brand>
+                    <Navbar.Brand href="home"></Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse>
                         <Nav navbarScroll>
-                            <Nav.Link href="#home">Home</Nav.Link>
-                            <Nav.Link href="#profile">Profile</Nav.Link>
-                            <Nav.Link href="#log">Log</Nav.Link>
-                            <NavDropdown title="Social" id="social-dropdown">
+                            <Nav.Link href="home">Home</Nav.Link>
+                            <Nav.Link href="profile">Profile</Nav.Link>
+                            <Nav.Link href="log">Log</Nav.Link>
+                            <NavDropdown title="Social">
                                 <NavDropdown.Item>Friends</NavDropdown.Item>
                                 <NavDropdown.Item>Groups</NavDropdown.Item>
                                 <NavDropdown.Divider />
