@@ -104,6 +104,8 @@ const Log = () => {
                 playerArr[i] = "";
             }
             setPlayers(playerArr);
+        } else {
+            setPlayers(new Array(0))
         }
     }, [selectedFormat])
 
@@ -146,10 +148,10 @@ const Log = () => {
                                     <option value={`${e}`}>{formats[e][0]}</option>
                                 ))
                             }
-                        </Form.Control>
+                        </Form.Control><br />
                     </Form.Group>
                     <Form.Group controlId="logForm.PlayerInput">
-                        <Form.Label><b>PLAYERS: </b></Form.Label>
+                        <Form.Label><b>PLAYERS: </b></Form.Label><br />
                         {
                             players.map((e, i) => (
                                 <>
@@ -158,28 +160,68 @@ const Log = () => {
                                         type="text"
                                         placeholder="Player Name"
                                         onChange={e => {
-
+                                            let tempArr = players.slice();
+                                            tempArr[i] = e.target.value;
+                                            setPlayers(tempArr);
                                         }}>
                                     </Form.Control>
+                                    <br />
                                 </>
                             ))
                         }
                     </Form.Group>
                     <Form.Group controlId="logForm.DeckInput">
-                        <Form.Label><b>DECKS: </b></Form.Label>
+                        <Form.Label><b>DECKS: </b></Form.Label><br />
                         {
+                            players.map((e, i) => (
+                                <>
+                                    <Form.Label>Player {i + 1}</Form.Label>
+                                    <Form.Control 
+                                        type="text"
+                                        placeholder="Deck Title"
+                                        onChange={e => {
 
+                                        }}>
+                                    </Form.Control>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Deck Link (Optional)"
+                                        onChange={e => {
+
+                                        }}>
+
+                                    </Form.Control>
+                                    <br />
+                                </>
+                            ))
                         }
                     </Form.Group>
                     <Form.Group controlId="logForm.OutcomeInput">
                         <Form.Label><b>OUTCOME: </b></Form.Label>
+                        {
+                            players.map((e, i) => (
+                                <Form.Control
+                                    as="select"
+                                    onChange={e => {
+                                        
+                                    }}>
+                                    {
+                                        players.map((e, i) => (
+                                            <>
+                                                <option value={`${e}`}>{e}</option>
+                                            </>
+                                        ))
+                                    }
+                                </Form.Control>
+                            ))
+                        }
                     </Form.Group>
                     <Form.Group controlId="logForm.OptionalInput">
                         <Form.Label><b>OPTIONAL: </b></Form.Label>
                     </Form.Group>
                     <Form.Group controlId="logForm.CommentInput">
                         <Form.Label><b>COMMENTS: </b></Form.Label>
-                        <Form.Control as="textarea" rows={3}></Form.Control>
+                        <Form.Control as="textarea" rows={3}></Form.Control><br />
                     </Form.Group>
                     <Button variant="primary" onClick={handleSubmit}>
                         Submit
