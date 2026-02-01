@@ -54,10 +54,20 @@ const Log = () => {
     * First Render Hook
     */
     useEffect(() => {
-        // Get formats from the server
-        // TODO: Could put into async handler
-        try {
 
+        try {
+            // TODO: Get formats from the server
+            // TODO: Could put into async handler
+            setFormats({
+                "CDH": ["Canadian Highlander", 2],
+                "EDH": ["Commander", 4],
+                "LGC": ["Legacy", 2],
+                "MDN": ["Modern", 2],
+                "PPR": ["Pauper", 2],
+                "PNR": ["Pioneer", 2],
+                "STD": ["Standard", 2],
+                "THD": ["Two Headed Dragon", 4]
+            });
         } catch(err) {
             console.log("Unable to retrieve formats, using defaults.");
             setFormats({
@@ -88,8 +98,13 @@ const Log = () => {
     */
     useEffect(() => {
         // Update the number of players based on format selected
-        let numPlayers = formats[selectedFormat][1];
-        setPlayers(new Array(numPlayers));
+        if (selectedFormat != "") {
+            let playerArr = new Array(formats[selectedFormat][1]);
+            for (let i = 0; i < playerArr.length; i++) {
+                playerArr[i] = "";
+            }
+            setPlayers(playerArr);
+        }
     }, [selectedFormat])
 
 
@@ -118,35 +133,42 @@ const Log = () => {
                         <Form.Control type="date" />
                     </Form.Group>
                     <Form.Group controlId="logForm.FormatInput">
-                        <Form.Label><b>FORMAT: </b></Form.Label>
-                        {
-                            Object.keys(formats).map((e) => (
-                                    <Form.Check 
-                                        inline
-                                        type={"radio"}
-                                        id={`${e}`}
-                                        label={`${formats[e][0]}`}
-                                    />
-                            ))
-                        }
+                        <Form.Label><b>FORMAT: </b></Form.Label><br />
+                        <Form.Control 
+                            as="select"
+                            value={selectedFormat}
+                            onChange={ e => {
+                                setSelectedFormat(e.target.value);
+                            }}>
+                            <option value="">Select format...</option>
+                            {
+                                Object.keys(formats).map((e) => (
+                                    <option value={`${e}`}>{formats[e][0]}</option>
+                                ))
+                            }
+                        </Form.Control>
                     </Form.Group>
                     <Form.Group controlId="logForm.PlayerInput">
                         <Form.Label><b>PLAYERS: </b></Form.Label>
                         {
                             players.map((e, i) => (
-                                <Form.Text id={"player" + i + "Name"} muted>Player {i}</Form.Text>
+                                <>
+                                    <Form.Label>Player {i + 1}</Form.Label>
+                                    <Form.Control 
+                                        type="text"
+                                        placeholder="Player Name"
+                                        onChange={e => {
+
+                                        }}>
+                                    </Form.Control>
+                                </>
                             ))
                         }
                     </Form.Group>
                     <Form.Group controlId="logForm.DeckInput">
                         <Form.Label><b>DECKS: </b></Form.Label>
                         {
-                            players.map((e, i) => (
-                                <>
-                                    <Form.Text id={"player" + i + "Deck"} muted>Player {i} Deck</Form.Text>
-                                    <Form.Text id={"player" + i + "Decklist"} muted>Player {i} Decklist - Optional</Form.Text>
-                                </>
-                            ))
+
                         }
                     </Form.Group>
                     <Form.Group controlId="logForm.OutcomeInput">
@@ -157,6 +179,7 @@ const Log = () => {
                     </Form.Group>
                     <Form.Group controlId="logForm.CommentInput">
                         <Form.Label><b>COMMENTS: </b></Form.Label>
+                        <Form.Control as="textarea" rows={3}></Form.Control>
                     </Form.Group>
                     <Button variant="primary" onClick={handleSubmit}>
                         Submit
