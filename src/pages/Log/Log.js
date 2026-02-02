@@ -6,7 +6,6 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Form from "react-bootstrap/Form";
 import Row from 'react-bootstrap/Row';
-import Spinner from 'react-bootstrap/Spinner';
 
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
@@ -36,10 +35,6 @@ const Log = () => {
     /*
     * Handler Functions
     */
-    function handleFormatChange(e) {
-        setSelectedFormat(e.target.value);
-    }
-
     function handleSubmit(e) {
         if (isFormComplete()) {
             // Form is complete, log the game
@@ -98,7 +93,7 @@ const Log = () => {
     */
     useEffect(() => {
         // Update the number of players based on format selected
-        if (selectedFormat != "") {
+        if (selectedFormat !== "") {
             let playerArr = new Array(formats[selectedFormat][1]);
             for (let i = 0; i < playerArr.length; i++) {
                 playerArr[i] = "";
@@ -155,42 +150,35 @@ const Log = () => {
                         {
                             players.map((e, i) => (
                                 <>
-                                    <Form.Label>Player {i + 1}</Form.Label>
-                                    <Form.Control 
-                                        type="text"
-                                        placeholder="Player Name"
-                                        onChange={e => {
-                                            let tempArr = players.slice();
-                                            tempArr[i] = e.target.value;
-                                            setPlayers(tempArr);
-                                        }}>
-                                    </Form.Control>
-                                    <br />
-                                </>
-                            ))
-                        }
-                    </Form.Group>
-                    <Form.Group controlId="logForm.DeckInput">
-                        <Form.Label><b>DECKS: </b></Form.Label><br />
-                        {
-                            players.map((e, i) => (
-                                <>
-                                    <Form.Label>Player {i + 1}</Form.Label>
-                                    <Form.Control 
-                                        type="text"
-                                        placeholder="Deck Title"
-                                        onChange={e => {
+                                    <Col>
+                                        <Form.Label>Player {i + 1}</Form.Label>
+                                        <Form.Control 
+                                            type="text"
+                                            placeholder="Player Name"
+                                            onChange={e => {
+                                                let tempArr = players.slice();
+                                                tempArr[i] = e.target.value;
+                                                setPlayers(tempArr);
+                                            }}>
+                                        </Form.Control>
+                                    </Col>
+                                    <Col>
+                                        <Form.Control 
+                                            type="text"
+                                            placeholder="Deck Title"
+                                            onChange={e => {
 
-                                        }}>
-                                    </Form.Control>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Deck Link (Optional)"
-                                        onChange={e => {
+                                            }}>
+                                        </Form.Control>
+                                        <Form.Control
+                                            type="text"
+                                            placeholder="Deck Link (Optional)"
+                                            onChange={e => {
 
-                                        }}>
+                                            }}>
 
-                                    </Form.Control>
+                                        </Form.Control>
+                                    </Col>
                                     <br />
                                 </>
                             ))
@@ -216,18 +204,15 @@ const Log = () => {
                             ))
                         }
                     </Form.Group>
-                    <Form.Group controlId="logForm.OptionalInput">
-                        <Form.Label><b>OPTIONAL: </b></Form.Label>
-                    </Form.Group>
                     <Form.Group controlId="logForm.CommentInput">
                         <Form.Label><b>COMMENTS: </b></Form.Label>
                         <Form.Control as="textarea" rows={3}></Form.Control><br />
                     </Form.Group>
                     <Button variant="primary" onClick={handleSubmit}>
                         Submit
-                    </Button>
+                    </Button><br />
                 </Form>
-            </Row>
+            </Row><br />
             <Row>
                 <Footer />
             </Row>
