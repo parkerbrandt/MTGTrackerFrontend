@@ -16,8 +16,6 @@ import Header from "../../components/Header";
 // TODO: Loading Symbol
 const Log = () => {
 
-    // TODO: Change to request
-
     const [formats, setFormats] = useState({});
     const [isLoading, setLoading] = useState(false);
     const [players, setPlayers] = useState([]);
@@ -104,10 +102,6 @@ const Log = () => {
         }
     }, [selectedFormat])
 
-
-    /*
-    * Child Components
-    */
     
 
     /*
@@ -159,6 +153,7 @@ const Log = () => {
                                                 let tempArr = players.slice();
                                                 tempArr[i] = e.target.value;
                                                 setPlayers(tempArr);
+                                                // TODO: On finish, retrieve decks from server and create dropdown
                                             }}>
                                         </Form.Control>
                                     </Col>
@@ -185,7 +180,36 @@ const Log = () => {
                         }
                     </Form.Group>
                     <Form.Group controlId="logForm.OutcomeInput">
-                        <Form.Label><b>OUTCOME: </b></Form.Label>
+                        <Form.Label><b>OUTCOME: </b></Form.Label><br />
+                        {
+                            selectedFormat !== "EDH" ? 
+                            <>
+                                <Form.Label>Best of: </Form.Label>
+                                <Form.Check
+                                    inline
+                                    label="1"
+                                    name="bestOfGroup"
+                                    type="radio"
+                                    id={`best-of-1`}
+                                />
+                                <Form.Check
+                                    inline
+                                    label="3"
+                                    name="bestOfGroup"
+                                    type="radio"
+                                    id={`best-of-3`}
+                                />
+                                <Form.Check
+                                    inline
+                                    label="5"
+                                    name="bestOfGroup"
+                                    type="radio"
+                                    id={`best-of-5`}
+                                />
+                            </>
+                            :
+                            <></>
+                        }
                         {
                             players.map((e, i) => (
                                 <Form.Control
